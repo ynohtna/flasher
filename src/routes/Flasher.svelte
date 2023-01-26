@@ -81,11 +81,6 @@ function tap(e) {
   const x = e.offsetX / el.clientWidth;
   const y = 1 - (e.offsetY / el.clientHeight);
   console.log(x, y, x / y);
-  if (x < y) {
-    return;
-  }
-
-  e.preventDefault();
 
   const now = performance.now();
   if (lastTap) {
@@ -96,7 +91,6 @@ function tap(e) {
 
   if (!rafid) {
     rafid = window.requestAnimationFrame(frame);
-    rafid = null;
   }
 }
 
@@ -149,6 +143,6 @@ onMount(function() {
   --s: 48px;
   height: var(--s);
   opacity: 0.2;
-  padding: 0 5px;
+  padding: 2px 5px;
 }
 </style>

@@ -42,6 +42,7 @@ function touch_xy(node, { callback, clamped }) {
   const evmap = {
     pointerdown(e) {
       e.preventDefault();
+      e.stopPropagation();
       // explicitly capture mouse movements out of bounds so operator
       // can mouse back into the region without loss of interaction.
       node.setPointerCapture(e.pointerId);
