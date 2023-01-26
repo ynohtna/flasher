@@ -80,6 +80,11 @@ section :global(svg) {
   stroke-width: 2px;
 }
 
+.button, .fader {
+  pointer-events: auto;
+  touch-action: pan-x, pan-y;
+}
+
 .button {
   display: grid;
   place-items: center;
