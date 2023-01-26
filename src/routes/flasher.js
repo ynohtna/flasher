@@ -13,6 +13,10 @@ class Flasher {
     this.colourIndex = 0;
   }
 
+  numWaves() {
+    return numWaves;
+  }
+
   accumulate(dt) {
     if (!this.interval) {
       return false;

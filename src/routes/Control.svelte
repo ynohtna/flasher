@@ -1,11 +1,13 @@
 <script>
 import touch_xy from '$lib/actions/touch_xy';
+import WaveIcon from './WaveIcon.svelte';
 
 export let flasher;
 export let landscape;
 
+let wave = flasher.wave;
 function onWaveShape() {
-  flasher.wave = flasher.wave + 1;
+  wave = flasher.wave = (flasher.wave + 1) % flasher.numWaves();
 }
 
 function onColourDown() {
@@ -28,6 +30,7 @@ const fader_opts = {
          class:portrait={!landscape}>
   <div class="button"
        on:pointerdown|preventDefault|stopPropagation={onWaveShape}>
+    <WaveIcon {wave} {pw} />
   </div>
 
   <div class="fader"
@@ -37,9 +40,19 @@ const fader_opts = {
   </div>
 
   <div class="button"
-       on:pointerdown|preventDefault|stopPropagation={onColourDown} />
+       on:pointerdown|preventDefault|stopPropagation={onColourDown}>
+    <svg viewBox="-4 -4 18 18" preserveAspectRatio="none">
+      <path fill="none" vector-effect="non-scaling-stroke"
+            d="M8 0L2 5L8 10" />
+    </svg>
+  </div>
   <div class="button"
-       on:pointerdown|preventDefault|stopPropagation={onColourUp} />
+       on:pointerdown|preventDefault|stopPropagation={onColourUp}>
+    <svg viewBox="-4 -4 18 18" preserveAspectRatio="none">
+      <path fill="none" vector-effect="non-scaling-stroke"
+            d="M2 0L8 5L2 10" />
+    </svg>
+  </div>
 </section>
 
 <style>
@@ -62,6 +75,11 @@ section > * {
   margin: 4px;
 }
 
+section :global(svg) {
+  stroke: #eee;
+  stroke-width: 2px;
+}
+
 .button {
   display: grid;
   place-items: center;
@@ -79,13 +97,13 @@ section > * {
   background-color: var(--hi);
 }
 .landscape .thumb {
-  left: var(--th, -10px);
+  left: calc(var(--th, -10px) - 1px);
   top: var(--i);
   bottom: var(--i);
   width: 2px;
 }
 .portrait .thumb {
-  top: var(--th, -10px);
+  top: calc(var(--th, -10px) - 1px);
   left: var(--i);
   right: var(--i);
   height: 2px;
