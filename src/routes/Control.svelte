@@ -19,8 +19,8 @@ function onColourUp() {
 
 let pw = flasher.pw;
 const fader_opts = {
-  callback(x) {
-    pw = flasher.pw = x;
+  callback(x, y) {
+    pw = flasher.pw = landscape ? x : y;
   },
   clamped: true,
 };
