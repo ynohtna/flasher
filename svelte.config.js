@@ -20,3 +20,7 @@ const config = {
 };
 
 export default config;
+export {
+    repo,
+    version,
+};

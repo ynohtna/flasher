@@ -12,10 +12,12 @@
 	},
 	"devDependencies": {
 		"@sveltejs/kit": "^1.2.10",
+		"@vite-pwa/sveltekit": "^0.1.2",
 		"eslint": "^8.32.0",
 		"eslint-plugin-svelte3": "^4.0.0",
 		"svelte": "^3.55.1",
 		"vite": "^4.0.4",
+		"vite-plugin-pwa": "^0.14.1",
 		"vitest": "^0.28.2"
 	},
 	"type": "module",
