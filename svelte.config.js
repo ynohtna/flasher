@@ -1,11 +1,20 @@
 import adaptstatic from '@sveltejs/adapter-static';
+import { readFileSync } from 'fs';
+import { fileURLToPath } from 'url';
+
+function readVersion() {
+    const file = fileURLToPath(new URL('package.json', import.meta.url));
+    const json = readFileSync(file, 'utf8');
+    const pkg = JSON.parse(json);
+    return pkg.version;
+}
 
 const repo = "/flasher";
-const version = "0.1.3";
+const version = readVersion();
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	kit: {
+    kit: {
         adapter: adaptstatic({
             fallback: `${repo}/index.html`,
         }),
@@ -16,7 +25,7 @@ const config = {
         version: {
             name: version,
         },
-	}
+    }
 };
 
 export default config;
