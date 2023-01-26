@@ -26,13 +26,18 @@ function touch_xy(node, { callback, clamped }) {
 
   const active_evmap = {
     pointermove(e) {
+      e.preventDefault();
+      e.stopPropagation();
       update(e.target, e.offsetX, e.offsetY, 'move');
     },
     pointerup(e) {
+      e.preventDefault();
+      e.stopPropagation();
       removeEventMap(node, active_evmap, true);
       update(e.target, e.offsetX, e.offsetY, 'up');
     },
     pointercancel(e) {
+      e.stopPropagation();
       removeEventMap(node, active_evmap, true);
       node.releasePointerCapture(e.pointerId);
       update(e.target, e.offsetX, e.offsetY, 'cancel');

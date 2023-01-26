@@ -68,8 +68,9 @@ const debounceResizeInterval = 200; // ms
 let debounceTimer;
 
 function handleResize() {
-  debounceTimer = null;
   landscape$.recalc();
+  mainRect = main.getBoundingClientRect();
+  debounceTimer = null;
 }
 
 function onResize() {

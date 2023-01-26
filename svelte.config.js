@@ -1,7 +1,7 @@
 import adaptstatic from '@sveltejs/adapter-static';
 
 const repo = "/flasher";
-const version = "0.1";
+const version = "0.1.3";
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
