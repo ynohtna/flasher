@@ -21,9 +21,9 @@ class Flasher {
     if (!this.interval) {
       return false;
     }
-    let acc = this.accum + (dt / this.interval);
-    if (acc > 1) {
-      acc -= 1;
+    let acc = (this.accum + (dt / this.interval)) % 1;
+    if (acc < 0) {
+      acc += 1;
     }
     this.accum = acc;
 

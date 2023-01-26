@@ -17,7 +17,11 @@ function frame(now) {
   rafid = null;
 
   if (lastFrame) {
-    const dt = now - lastFrame;
+    let dt = now - lastFrame;
+    if (dt > 100) {
+      dt = 100;
+    }
+
     let held = 0;
 
     for (const flasher of flashers) {
